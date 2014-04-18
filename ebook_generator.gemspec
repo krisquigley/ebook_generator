@@ -13,6 +13,12 @@ Gem::Specification.new do |s|
   s.homepage    =
     'https://github.com/krisquigley/ebook_generator'
 
+  s.add_runtime_dependency 'ruby', '>= 2.0.0'
+  s.add_runtime_dependency 'rails', '>= 4.0.0'
+  s.add_runtime_dependency 'friendly_id', '>= 5.0.3'
+  s.add_runtime_dependency 'pg',  '>= 0.17.1'
+  s.add_runtime_dependency 'redcarpet',  '>= 3.0.0'
+  s.add_runtime_dependency 'rubyzip',  '>= 1.0.0'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
