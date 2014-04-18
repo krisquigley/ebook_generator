@@ -2,12 +2,16 @@ require "ebook_generator/version"
 
 module EbookGenerator
 
+  def self.included(model_class)
+    model_class.extend self
+  end
+
   # Move writing of files into its own class that accepts an array
-  def make_dir(path)
+  def self.make_dir(path)
     Dir.mkdir(path, 0777) unless File.exists?(path)
   end
 
-  def initialise_files(path)
+  def self.initialise_files(path)
     metainf_path = path + "/META-INF"
 
     Dir.mkdir(metainf_path) unless File.exists?(metainf_path)
@@ -48,7 +52,7 @@ module EbookGenerator
 
   end
 
-  def generate_headers(attrs)
+  def self.generate_headers(attrs)
     xml = "<title>#{attrs.title}</title>
       <meta content=\"#{attrs.title}\" name=\"Title\" />
       <meta content=\"#{attrs.title}\" name=\"Author\" />
@@ -56,7 +60,7 @@ module EbookGenerator
     return xml
   end
 
-  def generate_sections(path, attrs)
+  def self.generate_sections(path, attrs)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
     headers = generate_headers(attrs)
 
@@ -83,7 +87,7 @@ module EbookGenerator
     end
   end
 
-  def generate_content_opf(path, attrs)
+  def self.generate_content_opf(path, attrs)
     xml = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>
     <package xmlns=\"http://www.idpf.org/2007/opf\" unique-identifier=\"BookId\" version=\"2.0\">
       <metadata xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:opf=\"http://www.idpf.org/2007/opf\">
@@ -131,7 +135,7 @@ module EbookGenerator
 
   end
 
-  def generate_toc_ncx(path, attrs)
+  def self.generate_toc_ncx(path, attrs)
     xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>
     <!DOCTYPE ncx PUBLIC \"-//NISO//DTD ncx 2005-1//EN\"
      \"http://www.daisy.org/z3986/2005/ncx-2005-1.dtd\">
@@ -169,11 +173,11 @@ module EbookGenerator
     FileUtils.chmod 0755, toc_path
   end
 
-  def remove_tmp_dir(directory)
+  def self.remove_tmp_dir(directory)
     FileUtils.remove_dir(directory, true)
   end
 
-  def generate_ebook(ebook_id)
+  def self.generate_ebook(ebook_id)
 
     # create tmp directory based on UUID
     path = Rails.root.join "tmp/#{ebook_id}"
