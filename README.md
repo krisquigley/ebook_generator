@@ -27,22 +27,15 @@ Or install it yourself as:
 ## Usage
 
 Generate the tables needed to process the ebooks:
-
 `rails generate ebook_generator`
 
-Migrate the db:
-
+Migrate the database:
 `rake db:migrate`
 
-Require the ebook_generator module in your class:
-
-`include 'EbookGenerator'`
-
 Pass the id for the ebook you want to generate:
-
 `EbookGenerator.generate_ebook(ebook.id)`
 
-This will then generate an ebook based on the values in the db in the /tmp folder.
+This will then generate an ePub based on the values in the db and output to the /tmp folder.
 
 ## Feature roadmap
 
