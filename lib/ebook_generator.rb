@@ -30,7 +30,7 @@ module EbookGenerator
 
   end
 
-  def generate_mimetype(path)
+  def self.generate_mimetype(path)
 
     File.open(path, "w+") do |f|
       f.write("application/epub+zip")
@@ -40,7 +40,7 @@ module EbookGenerator
 
   end
 
-  def copy_style(path)
+  def self.copy_style(path)
     FileUtils.cp "#{root}/app/ebook/style.css", path
   end
 
