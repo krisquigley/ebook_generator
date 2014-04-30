@@ -1,6 +1,10 @@
 # EbookGenerator Changelog
 
-## 0.0.4 (2014-04-40)
+## 0.0.5 (2014-04-30)
+
+- Removed code to copy stylesheet, will wait until future version and create it dynamically
+
+## 0.0.4 (2014-04-30)
 
 - Added missing file "zip_file_processor"
 - Refactored code to use builder instead of strings

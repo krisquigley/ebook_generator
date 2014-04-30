@@ -39,7 +39,8 @@ module EbookGenerator
   end
 
   def self.copy_style(path)
-    FileUtils.cp Rails.root.to_s + "/app/ebook/style.css", path
+    # Removed until functionality to dynamically create the stylesheet is in place
+    #FileUtils.cp Rails.root.to_s + "/app/ebook/style.css", path
   end
 
   def self.generate_sections(path, attrs)
