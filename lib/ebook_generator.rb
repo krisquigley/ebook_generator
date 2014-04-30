@@ -1,5 +1,6 @@
 require "ebook_generator/version"
 require "ebook_generator/zip_file_processor"
+require "builder"
 
 module EbookGenerator
 
