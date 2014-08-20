@@ -1,6 +1,7 @@
 require "ebook_generator/version"
 require "ebook_generator/zip_file_processor"
 require "builder"
+require "redcarpet"
 
 module EbookGenerator
 
@@ -16,7 +17,6 @@ module EbookGenerator
   end
 
   def self.generate_container(path)
-
     file = File.new(path + "/container.xml", "wb")
     xm = Builder::XmlMarkup.new(:target => file, :indent => 2)
     xm.instruct!
@@ -27,15 +27,12 @@ module EbookGenerator
     }
 
     file.close
-
   end
 
   def self.generate_mimetype(path)
-
     File.open(path, "w+") do |f|
       f.write("application/epub+zip")
     end
-
   end
 
   def self.copy_style(path)
@@ -43,9 +40,12 @@ module EbookGenerator
     #FileUtils.cp Rails.root.to_s + "/app/ebook/style.css", path
   end
 
-  def self.generate_sections(path, attrs)
+  def self.convert_to_html(content)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
+    markdown.render(content)
+  end
 
+  def self.generate_sections(path, attrs)
     attrs.sections.each do |section|
       file = File.new(path + "/Section#{section.position}.html", "wb")
 
@@ -59,7 +59,7 @@ module EbookGenerator
           xm.meta("content" => attrs.creator, "name" => "Author")
           xm.link("href" => "../Styles/style.css", "rel" => "stylesheet", "type" => "text/css")
         }
-        xm.body { |b| b << "<div id=\"#{section.title}\">" + markdown.render(section.content) + "</div>" }
+        xm.body { |b| b << "<div id=\"#{section.title}\">" + convert_to_html(section.content) + "</div>" }
       }
 
       file.close
@@ -100,11 +100,9 @@ module EbookGenerator
     }
 
     file.close
-
   end
 
   def self.generate_toc_ncx(path, attrs)
-
     file = File.new(path + "/toc.ncx", "wb")
 
     xm = Builder::XmlMarkup.new(:target => file, :indent => 2)
@@ -133,7 +131,6 @@ module EbookGenerator
     }
 
     file.close
-
   end
 
   def self.change_perms(files)
@@ -147,7 +144,6 @@ module EbookGenerator
   end
 
   def self.generate_ebook(ebook_id)
-
     # Set the root path of the ebook
     path = Rails.root.to_s + "/tmp/#{ebook_id}"
 
@@ -183,7 +179,5 @@ module EbookGenerator
 
     # Clean up the tmp dir
     remove_tmp_dir(path + "/")
-
   end
-
 end
