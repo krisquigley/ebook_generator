@@ -1,4 +1,4 @@
-class CreateEbookGeneratorTables < ActiveRecord::Migration
+class CreateEbooks < ActiveRecord::Migration
   def change
     enable_extension 'uuid-ossp'
 

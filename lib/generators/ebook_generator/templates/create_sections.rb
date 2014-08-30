@@ -1,4 +1,4 @@
-class CreateEbookGeneratorTables < ActiveRecord::Migration
+class CreateSections < ActiveRecord::Migration
   def change
     create_table "sections", force: true do |t|
       t.string   "title",      null: false
