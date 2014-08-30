@@ -5,6 +5,7 @@ Rails gem to generate eBooks using the Markdown syntax to format content for sec
 An example of this gem being used can be found at: [ebook-generator.affinity-tech.com](http://ebook-generator.affinity-tech.com)
 
 Requires:
+- Rails 4
 - Postgres with UUID support (uses the id to generate the ebook UUID)
 - Rubyzip (to generate the .epub)
 - Redcarpet (to render Markdown into HTML)
@@ -32,34 +33,29 @@ Generate the tables needed to process the ebooks:
 Migrate the database:
 `rake db:migrate`
 
-Pass the id for the ebook you want to generate:
-`EbookGenerator.generate_ebook(ebook.id)`
+Pass the ebook object you want to generate:
+`EbookGenerator.generate_ebook(ebook_object)`
 
 This will then generate an ePub based on the values in the db and output to the /tmp folder.
 
 ## Feature roadmap
 
-### 0.1.0
+### 1.0.0
 - Kindle support
 - Tests
 
-### 0.2.0
+### 1.1.0
 - Style editing
 
-### 0.3.0
+### 1.2.0
 - PDF out
 
-### 0.4.0
+### 1.3.0
 - HTML out
 - Image support for the front cover
 
-### 0.5.0
+### 1.4.0
 - HTML to eBook conversion
-
-### 0.6.0
-- User membership to manage books
-
-Publishing support?
 
 ## Contributing
 

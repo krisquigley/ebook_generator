@@ -1,4 +1,5 @@
 require 'faker'
+title = Faker::Lorem.sentence(5)
 
 FactoryGirl.define do
   factory :section do
@@ -6,11 +7,11 @@ FactoryGirl.define do
     content { Faker::Lorem.paragraph(15) }
     sequence(:position)
 
-    book
+    ebook
   end
 
   factory :ebook do
-    title { Faker::Lorem.sentence(5) }
+    title { title }
     creator { Faker::Name.name }
     language { "en" }
     contributor { Faker::Name.name }
@@ -18,14 +19,15 @@ FactoryGirl.define do
     publisher { Faker::Name.name }
     rights { Faker::Lorem.paragraph(5) }
     subject { Faker::Lorem.sentence(5) }
+    slug { title.gsub(' ', '-') }
 
-    factory :book_with_sections do
-      transient do
+    factory :ebook_with_sections do
+      ignore do
         sections_count 15
       end
 
-      after(:build) do |book, evaluator|
-        create_list(:section, evaluator.sections_count, book: book)
+      after(:create) do |ebook, evaluator|
+        FactoryGirl.create_list(:section, evaluator.sections_count, ebook: ebook)
       end
     end
   end
