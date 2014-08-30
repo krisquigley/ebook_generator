@@ -3,6 +3,8 @@ require 'rails/generators/migration'
 require 'rails/generators/active_record'
 
 class EbookGeneratorGenerator < Rails::Generators::Base
+  source_root File.expand_path('../templates', __FILE__)
+  
   include Rails::Generators::Migration
   extend ActiveRecord::Generators::Migration
 
