@@ -6,10 +6,8 @@ An example of this gem being used can be found at: [ebook-generator.affinity-tec
 
 Requires:
 - Rails 4
-- Postgres with UUID support (uses the id to generate the ebook UUID)
 - Rubyzip (to generate the .epub)
 - Redcarpet (to render Markdown into HTML)
-- Friendly_id (for nice slugs and for naming of generated ebook file)
 
 ## Installation
 
