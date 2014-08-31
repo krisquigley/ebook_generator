@@ -36,11 +36,10 @@ Pass the ebook object you want to generate:
 
 This will then generate an ePub based on the values in the db and output to the /tmp folder.
 
-## Feature roadmap
+For a Kindle mobi file then pass in `true` as the second argument:
+`EbookGenerator.generate_ebook(ebook_object, true)`
 
-### 1.0.0
-- Kindle support
-- Tests
+## Feature roadmap
 
 ### 1.1.0
 - Style editing

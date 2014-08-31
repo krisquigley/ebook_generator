@@ -8,7 +8,7 @@
 - Refactored codebase (again)
 - Tests! (finally)
 - Removed Postgres dependency
-- TODO: Export to Kindle(.mobi)
+- Export to Kindle(.mobi)
 
 ## 0.0.5 (2014-04-30)
 
