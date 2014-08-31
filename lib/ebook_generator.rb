@@ -186,7 +186,7 @@ module EbookGenerator
   end
 
   def self.generate_mobi(path, slug)
-    `#{Rails.root.to_s}/bin/kindlegen path -o slug.mobi`
+    `#{Rails.root.to_s}/bin/kindlegen #{path} -o #{slug}.mobi`
     "#{Rails.root.to_s}/tmp/#{slug}.mobi"
   end
 end
