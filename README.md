@@ -8,6 +8,7 @@ Requires:
 - Rails 4
 - Rubyzip (to generate the .epub)
 - Redcarpet (to render Markdown into HTML)
+- Kindlegen (to generate .mobi files)
 
 ## Installation
 
@@ -38,6 +39,9 @@ This will then generate an ePub based on the values in the db and output to the 
 
 For a Kindle mobi file then pass in `true` as the second argument:
 `EbookGenerator.generate_ebook(ebook_object, true)`
+
+To enable the generation of Kindle mobi files then you will first need to download the [kindlegen](http://www.amazon.com/gp/feature.html?docId=1000765211)
+command line tool from Amazon and put it in your apps `/bin` directory.
 
 ## Feature roadmap
 
