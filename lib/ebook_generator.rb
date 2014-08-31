@@ -9,7 +9,7 @@ module EbookGenerator
   #   model_class.extend self
   # end
 
-  def self.generate_ebook(ebook_object)
+  def self.generate_ebook(ebook_object, generate_kindle_file = false)
     # Set the root path of the ebook
     path = Rails.root.to_s + "/tmp/#{ebook_object.id}"
 
@@ -45,6 +45,8 @@ module EbookGenerator
     # Clean up the tmp dir
     remove_tmp_dir(path + "/")
 
+    # return the file path
+    zipfile_name = generate_mobi(zipfile_name, ebook_object.slug) if generate_kindle_file
     zipfile_name
   end
 
@@ -181,5 +183,10 @@ module EbookGenerator
 
   def self.remove_tmp_dir(directory)
     FileUtils.remove_dir(directory, true)
+  end
+
+  def self.generate_mobi(path, slug)
+    `#{Rails.root.to_s}/bin/kindlegen path -o slug.mobi`
+    "#{Rails.root.to_s}/tmp/#{slug}.mobi"
   end
 end

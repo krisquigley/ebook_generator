@@ -1,8 +1,9 @@
 # EbookGenerator Changelog
 
-## 1.0.0 (2014-09-??)
+## 1.0.0 (2014-08-31)
 
-- #generate method now takes object rather than id
+- #generate_ebook now takes object rather than id
+- #generate_ebook now returns the file path
 - Converted to Rails plugin
 - Refactored codebase (again)
 - Tests! (finally)

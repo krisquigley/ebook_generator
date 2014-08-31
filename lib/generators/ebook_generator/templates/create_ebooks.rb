@@ -3,7 +3,7 @@ class CreateEbooks < ActiveRecord::Migration
     create_table :ebooks, force: true  do |t|
       t.string    :title,      null: false
       t.string    :creator
-      t.string    :language,   limit: 2
+      t.string    :language,   limit: 2, null: false
       t.string    :contributor
       t.text      :description
       t.string    :publisher

@@ -1,7 +1,8 @@
 require 'faker'
-title = Faker::Lorem.sentence(5)
 
 FactoryGirl.define do
+  title = Faker::Lorem.sentence(5)
+
   factory :section do
     title { Faker::Lorem.sentence(2) }
     content { Faker::Lorem.paragraph(15) }

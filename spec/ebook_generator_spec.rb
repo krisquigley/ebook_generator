@@ -2,24 +2,13 @@ require 'spec_helper'
 
 RSpec.describe Ebook, :type => :model do
   describe "generating an ebook" do
-    let(:path) { '/tmp' }
-    let(:subject) {
+    let(:path) { "#{Rails.root.to_s}/tmp" }
+
+    before(:all) do
       ebook = FactoryGirl.create(:ebook_with_sections)
-      EbookGenerator.generate_ebook(ebook)
-    }
-
-    it "should generate the file" do
-      expect(File.exist?(subject)).to be_truthy
-    end
-  end
-
-  describe "generating an ebook" do
-    let(:path) { '/tmp' }
-
-    before(:suite) do
-      ebook = FactoryGirl.create(:ebook_with_sections)
-      EbookGenerator.generate_ebook(ebook)
-      unzip_file(subject, path)
+      file = EbookGenerator.generate_ebook(ebook)
+      path = "#{Rails.root.to_s}/tmp"
+      unzip_file(file, path)
     end
 
     it "should have a mimetype file" do
@@ -45,9 +34,23 @@ RSpec.describe Ebook, :type => :model do
 
   describe "converting markdown to HTML" do
     let(:markdown) { "- Hello" }
-    
+
     it "should return HTML" do
       expect(EbookGenerator.convert_to_html(markdown)).to eq("<ul>\n<li>Hello</li>\n</ul>\n")
+    end
+  end
+
+  describe "generating an ebook" do
+    let(:subject) {
+      title = Faker::Lorem.sentence(5)
+      slug = title.gsub(' ', '-')
+
+      ebook = FactoryGirl.create(:ebook_with_sections, :title => title, :slug => slug)
+      EbookGenerator.generate_ebook(ebook)
+    }
+
+    it "should generate the file" do
+      expect(File.exist?(subject)).to be_truthy
     end
   end
 end
