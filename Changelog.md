@@ -1,5 +1,9 @@
 # EbookGenerator Changelog
 
+## 1.0.3 (2014-09-04)
+
+- Changed second argument for #generate_ebook to take a string instead.
+
 ## 1.0.2 (2014-08-31)
 
 - #generate_ebook now takes object rather than id
