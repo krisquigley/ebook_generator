@@ -1,4 +1,5 @@
 # EbookGenerator
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/krisquigley/ebook_generator?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Rails gem to generate eBooks using the Markdown syntax to format content for sections of the book.
 
