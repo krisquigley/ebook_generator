@@ -2,7 +2,7 @@
 
 Rails gem to generate eBooks using the Markdown syntax to format content for sections of the book.
 
-An example of this gem being used can be found at: [ebook-generator.affinity-tech.com](http://ebook-generator.affinity-tech.com)
+An example of this gem being used can be found at: [dskri.be](http://dskri.be)
 
 Requires:
 - Rails 4
