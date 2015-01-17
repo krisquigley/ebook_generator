@@ -1,3 +1,4 @@
+require 'ebook_generator/railtie' if defined?(Rails)
 require "ebook_generator/version"
 require "ebook_generator/zip_file_processor"
 require "builder"
