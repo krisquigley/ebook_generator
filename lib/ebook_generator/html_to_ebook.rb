@@ -13,7 +13,7 @@ class HtmlToEbook
     @ebook.title = title
   def 
 
-  def save_ebook
+  def save
     @ebook.save
   end
 end
