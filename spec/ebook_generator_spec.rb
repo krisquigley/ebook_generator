@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Ebook, :type => :model do
   describe "generating an ebook" do
