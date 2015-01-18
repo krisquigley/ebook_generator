@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 4.1.5"
   s.add_dependency 'redcarpet',  '>= 3.0.0'
   s.add_dependency 'rubyzip',  '>= 1.0.0'
-  s.add_dependency 'friendly_id', '~> 5'
+  s.add_dependency 'friendly_id', '>= 5'
   s.add_dependency 'nokogiri'
 
   s.add_development_dependency "sqlite3", "~> 1.3"
